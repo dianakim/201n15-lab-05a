@@ -100,11 +100,33 @@ Test this function by hand in the console to get it working, and when you think 
 
 // Write your code here
 function multiplyArray(multArr) { //eslint-disable-line
+  var product = 1;
+  var arrayConcatted = '';
 
+  //loop through array and multiply numbers in array
+  var i = 0;
+  while(i < (multArr.length)) {
+    product = (multiply(product, multArr[i]))[0];
+    i++;
+  }
+  
+  //loop through the array
+  //concatenate to string
+  for(var i = 0; i < multArr.length; i++) {
+    if (i === 0) {
+      //if it's the first in the array
+      arrayConcatted = `${multArr[0]}`;
+    } else {
+      arrayConcatted = `${arrayConcatted},${multArr[i]}`;
+    }
+  }
+
+  var string = `The numbers ${arrayConcatted} have a product of ${product}.`;
+
+  return [product, string];
 }
-
 // Here is the test for multiplyArray(); uncomment it to run it
-// testMultiplyArray(testArray);
+testMultiplyArray(testArray);
 
 // Once you get the test passing, do an a-c-p cycle and synchronize the code between GitHub and your laptop. 
 
