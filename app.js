@@ -163,18 +163,20 @@ function multiplyAnyArray(dynamicArray) { //eslint-disable-line
     i++;
   }
   
-  //loop through the array
-  //concatenate to string
-  for(var i = 0; i < dynamicArray.length; i++) {
-    if (i === 0) {
-      //if it's the first in the array
-      arrayConcatted = `${dynamicArray[0]}`;
-    } else {
-      arrayConcatted = `${arrayConcatted},${dynamicArray[i]}`;
-    }
-  }
-
-  var string = `The numbers ${arrayConcatted} have a product of ${product}.`;
+  // //loop through the array
+  // //concatenate to string
+  // for(var i = 0; i < dynamicArray.length; i++) {
+  //   if (i === 0) {
+  //     //if it's the first in the array
+  //     arrayConcatted = `${dynamicArray[0]}`;
+  //   } else {
+  //     arrayConcatted = `${arrayConcatted},${dynamicArray[i]}`;
+  //   }
+  // }
+  // var string = `The numbers ${arrayConcatted} have a product of ${product}.`;
+  
+  var string = `The numbers ${dynamicArray} have a product of ${product}.`;
+  
   return [product, string];
 }
 
