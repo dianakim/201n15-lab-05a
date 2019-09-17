@@ -14,7 +14,7 @@ function sum(a, b) { //eslint-disable-line
   return [totalSum, string];
 }
 
-// Here is the test for sum(); 
+// Here is the test for sum();
 testSum(4, 7);
 
 // Once you get the test passing, do an a-c-p cycle and synchronize the code between GitHub and your laptop. Don't forget to create a new branch for your work on the next question!
@@ -52,11 +52,15 @@ Test this function by hand in the console to get it working, and when you think 
 
 // Write your code here
 function sumAndMultiply(a, b, c) { //eslint-disable-line
-  var sum = a + b + c;
-  var product = a * b * c;
-  var strOne = `${a} and ${b} and ${c} sum to ${sum}.`;
-  var strTwo = `The product of ${a} and ${b} and ${c} is ${product}.`
-  return [sum, product, strOne, strTwo];
+  var subSum = sum(a, b);
+  var finalSum = sum(subSum[0], c);
+  var subProduct = multiply(a, b);
+  var finalProduct = multiply(subProduct[0], c);
+
+  var strOne = `${a} and ${b} and ${c} sum to ${finalSum[0]}.`;
+  var strTwo = `The product of ${a} and ${b} and ${c} is ${finalProduct[0]}.`
+
+  return [finalSum[0], finalProduct[0], strOne, strTwo];
 }
 
 // Here is the test for sumAndMultiply(); uncomment it to run it
@@ -78,8 +82,8 @@ Test this function by hand in the console to get it working, and when you think 
 var testArray = [2, 3, 4]; //eslint-disable-line
 
 function sumArray(sumArr) { //eslint-disable-line
-  var sumOfArray = sum(sum(testArray[0], testArray[1])[0], testArray[2])[0];
-  var string = `${testArray[0]},${testArray[1]},${testArray[2]} was passed in as an array of numbers, and ${sumOfArray} is their sum.`;
+  var sumOfArray = sum(sum(sumArr[0], sumArr[1])[0], sumArr[2])[0];
+  var string = `${sumArr[0]},${sumArr[1]},${sumArr[2]} was passed in as an array of numbers, and ${sumOfArray} is their sum.`;
   return [sumOfArray, string];
 }
 
@@ -103,15 +107,22 @@ function multiplyArray(multArr) { //eslint-disable-line
   var product = 1;
   var arrayConcatted = '';
 
-  //loop through array and multiply numbers in array
-  var i = 0;
-  while(i < (multArr.length)) {
+  //loop through array 
+  for(var i = 0; i < multArr.length; i++) {
+    //multiply numbers in array
     product = (multiply(product, multArr[i]))[0];
-    i++;
+
+    //concatenate to string
+    if (i === 0) {
+      //if it's the first in the array
+      arrayConcatted = `${multArr[0]}`;
+    } else {
+      arrayConcatted = `${arrayConcatted},${multArr[i]}`;
+    }
   }
-  
+
   //loop through the array
-  //concatenate to string
+  
   for(var i = 0; i < multArr.length; i++) {
     if (i === 0) {
       //if it's the first in the array
@@ -128,7 +139,7 @@ function multiplyArray(multArr) { //eslint-disable-line
 // Here is the test for multiplyArray(); uncomment it to run it
 testMultiplyArray(testArray);
 
-// Once you get the test passing, do an a-c-p cycle and synchronize the code between GitHub and your laptop. 
+// Once you get the test passing, do an a-c-p cycle and synchronize the code between GitHub and your laptop.
 
 // You're done! Submit the link to the repo following the instructions in Canvas. Or, try out the stretch goal below...
 
@@ -154,7 +165,6 @@ function multiplyAnyArray(dynamicArray) { //eslint-disable-line
   //and the second element is a string
 
   var product = 1;
-  var arrayConcatted = '';
 
   //loop through array and multiply numbers in array
   var i = 0;
@@ -162,21 +172,9 @@ function multiplyAnyArray(dynamicArray) { //eslint-disable-line
     product = (multiply(product, dynamicArray[i]))[0];
     i++;
   }
-  
-  // //loop through the array
-  // //concatenate to string
-  // for(var i = 0; i < dynamicArray.length; i++) {
-  //   if (i === 0) {
-  //     //if it's the first in the array
-  //     arrayConcatted = `${dynamicArray[0]}`;
-  //   } else {
-  //     arrayConcatted = `${arrayConcatted},${dynamicArray[i]}`;
-  //   }
-  // }
-  // var string = `The numbers ${arrayConcatted} have a product of ${product}.`;
-  
+
   var string = `The numbers ${dynamicArray} have a product of ${product}.`;
-  
+
   return [product, string];
 }
 
